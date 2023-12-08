@@ -25,3 +25,75 @@ Ejemplos:
 ordenarObjetos(usuarios, "edad");
  
 */
+
+class Words {
+  List<dynamic> sortData(Array data, Text description) {
+    Sort sort = Sort();
+    List<dynamic> result = [];
+    // print(description.description);
+    // print('name');
+    // acces to values:
+      // - data.data
+      // - data.data[0]
+      // - data.data[0]['name']
+    if(description.description == 'name'){
+      // sortByName(data.data);
+      result = sort.sortByName(data.data);
+    }else if(description.description == 'age'){
+      // print(data.data[1]);
+      result = sort.sortByAge(data.data);
+    }else {
+      print('Invalid option');
+    }
+    // return [data.data, description.description];
+    return result;
+  }
+
+  // List<dynamic> sortByName(List<dynamic> data){
+  //   return data;
+  // }
+
+  // List<dynamic> sortByAge(List<dynamic> data){
+  //   return data;
+  // }
+}
+
+class Sort {
+  List<dynamic> sortByName(List<dynamic> data) {
+    print('sort by name');
+    for(int i = 0; i < data.length; i++){
+      // print(data[i]['name']);
+    }
+    return data;
+  }
+
+  List<dynamic> sortByAge(List<dynamic> data) {
+    return data;
+  } 
+}
+
+class Array {
+  List<dynamic> data = [];
+  Array(this.data);
+}
+
+class Text {
+  String? description = '';
+  Text(this.description);
+}
+
+void main() {
+  List<dynamic> data = [
+    {'name': 'Antonio', 'age': 23},
+    {'name': 'Oscar', 'age': 25},
+    {'name': 'Marcus', 'age': 25}
+  ];
+  String option = 'name';
+
+  Text text = Text(option);
+  Array array = Array(data);
+
+  Words words = Words();
+  final result = words.sortData(array, text);
+  print(result);
+}
