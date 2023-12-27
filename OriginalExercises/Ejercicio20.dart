@@ -30,15 +30,32 @@ class Words {
   List<dynamic> sortData(Array data, Text description) {
     Sort sort = Sort();
     List<dynamic> result = [];
+    // print(description.description);
+    // print('name');
+    // acces to values:
+      // - data.data
+      // - data.data[0]
+      // - data.data[0]['name']
     if(description.description == 'name'){
+      // sortByName(data.data);
       result = sort.sortByName(data.data);
     }else if(description.description == 'age'){
+      // print(data.data[1]);
       result = sort.sortByAge(data.data);
     }else {
       print('Invalid option');
     }
+    // return [data.data, description.description];
     return result;
   }
+
+  // List<dynamic> sortByName(List<dynamic> data){
+  //   return data;
+  // }
+
+  // List<dynamic> sortByAge(List<dynamic> data){
+  //   return data;
+  // }
 }
 
 class Sort {
