@@ -42,12 +42,28 @@ class Words {
 }
 
 class Sort {
-  List<dynamic> sortByName(List<dynamic> data) {
-    print('sort by name');
+  dynamic sortByName(List<dynamic> data) {
+    List<String> nombres = [];
+    List<int> edades = [];
+    List<Map<String,dynamic>> sortedData = [];
     for(int i = 0; i < data.length; i++){
-      print(data[i]['name']);
+      nombres.add(data[i]['name']);
+      edades.add(data[i]['age']);
     }
-    return data;
+    nombres.sort();
+    edades.clear();
+    for(int i = 0; i < data.length; i++){
+      for(int j = 0; j < data.length; j++){
+        if(nombres[i] == data[j]['name']){
+          edades.add(data[j]['age']);
+        }
+      }
+    }
+
+    for(int i = 0; i < data.length; i++){
+      sortedData.add({'name':nombres[i],'age':edades[i]});
+    }
+    return sortedData;
   }
 
   List<dynamic> sortByAge(List<dynamic> data) {
@@ -71,9 +87,11 @@ class Text {
 
 void main() {
   List<dynamic> data = [
-    {'name': 'Antonio', 'age': 23},
-    {'name': 'Oscar', 'age': 25},
-    {'name': 'Marcus', 'age': 25}
+    {'name': 'Oscar', 'age': 32},
+    {'name': 'Marcus', 'age': 40},
+    {'name': 'Antonio', 'age': 55},
+    {'name': 'Rogelio', 'age': 20},
+    {'name': 'Alfonso', 'age': 8},
   ];
   String option = 'name';
 
@@ -82,5 +100,6 @@ void main() {
 
   Words words = Words();
   final result = words.sortData(array, text);
-  print(result);
+  // print(result);
+  result.forEach((element) => print(element));
 }

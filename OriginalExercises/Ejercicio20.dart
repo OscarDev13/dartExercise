@@ -30,41 +30,63 @@ class Words {
   List<dynamic> sortData(Array data, Text description) {
     Sort sort = Sort();
     List<dynamic> result = [];
-    // print(description.description);
-    // print('name');
-    // acces to values:
-      // - data.data
-      // - data.data[0]
-      // - data.data[0]['name']
     if(description.description == 'name'){
-      // sortByName(data.data);
       result = sort.sortByName(data.data);
     }else if(description.description == 'age'){
-      // print(data.data[1]);
       result = sort.sortByAge(data.data);
     }else {
       print('Invalid option');
     }
-    // return [data.data, description.description];
     return result;
   }
-
-  // List<dynamic> sortByName(List<dynamic> data){
-  //   return data;
-  // }
-
-  // List<dynamic> sortByAge(List<dynamic> data){
-  //   return data;
-  // }
 }
 
 class Sort {
-  List<dynamic> sortByName(List<dynamic> data) {
-    print('sort by name');
+  dynamic sortByName(List<dynamic> data) {
+    // print('sort by name');
+    // for(int i = 0; i < data.length; i++){
+    //   print(data[i]['name']);
+    // }
+    // var nombres = data.map((nombre) => nombre.split(' ')[1]).toList();
+    // print(data[0]['name']);
+    // print(data[1]['name']);
+    // print(data[2]['name']);
+    List<String> nombres = [];
+    List<int> edades = [];
+    Map<String, dynamic> elements = {};
+    List<Map<String,dynamic>> sortedData = [];
     for(int i = 0; i < data.length; i++){
-      print(data[i]['name']);
+      nombres.add(data[i]['name']);
+      edades.add(data[i]['age']);
     }
-    return data;
+    nombres.sort();
+    edades.clear();
+    for(int i = 0; i < data.length; i++){
+      for(int j = 0; j < data.length; j++){
+        if(nombres[i] == data[j]['name']){
+          print('${nombres[i]} - ${data[j]['name']}');
+          edades.add(data[j]['age']);
+        }
+      }
+    }
+    // data.clear();
+    // for (int i = 0; i < nombres.length; i++){
+    //   elements[nombres[i]] = edades[i];
+    //   // nombres[i] = edades[i].toString()
+    // }
+
+    for(int i = 0; i < data.length; i++){
+      // sortedData.add({nombres[i]:edades[i]});
+      // sortedData.add({'name:${nombres[i]}':'age:${edades[i]}'});
+      sortedData.add({'name':nombres[i],'age':edades[i]});
+    }
+
+    // print(sortedData);
+    // print(nombres);
+    // print(edades);
+    // print('elements: ${elements}');
+    // return data;
+    return sortedData;
   }
 
   List<dynamic> sortByAge(List<dynamic> data) {
@@ -88,9 +110,11 @@ class Text {
 
 void main() {
   List<dynamic> data = [
-    {'name': 'Antonio', 'age': 23},
-    {'name': 'Oscar', 'age': 25},
-    {'name': 'Marcus', 'age': 25}
+    {'name': 'Oscar', 'age': 32},
+    {'name': 'Marcus', 'age': 40},
+    {'name': 'Antonio', 'age': 55},
+    {'name': 'Rogelio', 'age': 20},
+    {'name': 'Alfonso', 'age': 8},
   ];
   String option = 'name';
 
