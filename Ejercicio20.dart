@@ -65,11 +65,30 @@ class Sort {
   }
 
   List<dynamic> sortByAge(List<dynamic> data) {
-    print('sort by age');
-    for(int i = 0; i < data.length; i++){
-      print(data[i]['age']);
+    // print('sort by age');
+    // for(int i = 0; i < data.length; i++){
+    //   print(data[i]['age']);
+    // }
+    List<int> edades = [];
+    List<String> nombres = [];
+    List<Map<String,dynamic>> sortedData = [];
+    for (int i = 0; i < data.length; i++){
+      edades.add(data[i]['age']);
     }
-    return data;
+    edades.sort();
+    for(int i = 0; i < data.length; i++){
+      for(int j = 0; j < data.length; j++){
+          // print('${edades[i]} - ${data[i]['name']}');
+        if(edades[i] == data[j]['age']){
+          nombres.add(data[j]['name']);
+        }
+      }
+    }
+    for(int i = 0; i < edades.length; i++){
+      sortedData.add({'name':nombres[i],'age':edades[i]});
+    }
+    // print(nombres);
+    return sortedData;
   } 
 }
 
@@ -91,7 +110,7 @@ void main() {
     {'name': 'Rogelio', 'age': 20},
     {'name': 'Alfonso', 'age': 8},
   ];
-  String option = 'name';
+  String option = 'age';
 
   Text text = Text(option);
   Array array = Array(data);
