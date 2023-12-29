@@ -48,10 +48,8 @@ class Sort {
     List<Map<String,dynamic>> sortedData = [];
     for(int i = 0; i < data.length; i++){
       nombres.add(data[i]['name']);
-      edades.add(data[i]['age']);
     }
     nombres.sort();
-    edades.clear();
     for(int i = 0; i < data.length; i++){
       for(int j = 0; j < data.length; j++){
         if(nombres[i] == data[j]['name']){
@@ -100,6 +98,5 @@ void main() {
 
   Words words = Words();
   final result = words.sortData(array, text);
-  // print(result);
   result.forEach((element) => print(element));
 }
