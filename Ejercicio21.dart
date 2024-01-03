@@ -26,24 +26,56 @@ Devuelve:
 */
 
 class Matrix {
-  void generateMatrix(int size){
-    // var matrix = Matrix.fromList([]);
-    List<List<dynamic>> matriz = [];
-    List<int> firstData = [];
-    for (int i = 0; i < size; i++){
-      firstData.add(i+1);
-    }
-    // matriz.add([size]);
-    for (int i = 0; i < size; i++){
-      for(int j = 0; j < size*size; j++){
-        matriz.add([j+1]);
+  dynamic generateMatrix(int size) {
+    // Create empty array
+    List<dynamic> matrix = [];
+
+    // Acumulator variable of the number that i'm put inside the matrix
+    var currentNumber = 1;
+
+    // Bucle to generate the rows
+    for(int row = 0; row < size; row++){
+      //create a new row with an add
+      matrix.add([]);
+
+      // Bucle to generate every number of the matrix
+      for(int column = 0; column < size; column++){
+        matrix[row].add(currentNumber++);
       }
     }
-    print(firstData);
+    //return the result
+    // print(size);
+    return matrix.forEach((element) => print(element));
   }
 }
 
 void main(){
   Matrix matrix = Matrix();
   matrix.generateMatrix(4);
+  // print(matrix.generateMatrix(4));
+  // print(matrix.generateMatrix(4).map((index) => print(index)));
+  // print(matrix.generateMatrix(4));
 }
+
+// class Matrix {
+//   void generateMatrix(int size){
+//     // var matrix = Matrix.fromList([]);
+//     List<List<dynamic>> matriz = [];
+//     List<int> firstData = [];
+//     for (int i = 0; i < size; i++){
+//       firstData.add(i+1);
+//     }
+//     // matriz.add([size]);
+//     for (int i = 0; i < size; i++){
+//       for(int j = 0; j < size*size; j++){
+//         matriz.add([j+1]);
+//       }
+//     }
+//     print(firstData);
+//   }
+// }
+
+// void main(){
+//   Matrix matrix = Matrix();
+//   matrix.generateMatrix(4);
+// }
