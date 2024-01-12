@@ -19,11 +19,16 @@ buscarPalabra('Hola como estas', 'Hola')  // Devuelve: true
 class Word {
   static bool findWord(String text, String word){
 
-    return text.contains(word);
-    
+    List<String> separatedWords = [];
+    separatedWords = text.split(' ');
+    separatedWords.forEach((element) => element.toLowerCase());
+    print(separatedWords);
+
+    // return text.contains(word);
+    return separatedWords.contains(word) ? true : false;
   }
 }
 
 void main(){
-  print(Word.findWord('Hola como estas', 'komo'));
+  print(Word.findWord('Hola como estas', 'hola'));
 }
