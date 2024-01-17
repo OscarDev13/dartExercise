@@ -18,14 +18,30 @@ eliminarDuplicados([1, 2, 3, 4, 9, 9, 9, 9]); // 5
 */
 
 class Number {
-  static int deleteDuplicates(List<int> data) {
+  static dynamic deleteDuplicates(List<int> data) {
+
+    // Map<dynamic, dynamic> count = {};
+
+    // for(int number in data){
+    //   if(count[number] == null){
+    //     count[number] = 1;
+    //   } else {
+    //     count[number]++;
+    //     if(count[number] >= 3){
+    //       count[number] = 2;
+    //     }
+    //   }
+    // }
+
+    // return count.length;
+
     List<int> compareData = data;
     int count = 0;
 
     for(int i = 0; i < data.length; i++){
       if(data[i] == compareData[i]){
         count++;
-        if(count > 2 ){
+        if(count > 2 && compareData.contains(data[i])){
           count = 0;
           compareData.remove(data[i]);
         }
@@ -37,7 +53,9 @@ class Number {
 }
 
 void main(){
-  print(Number.deleteDuplicates([1, 2, 3, 4, 9, 9, 9, 9]));
+  print(Number.deleteDuplicates([4, 4, 4, 2, 2, 3]));
+  print(Number.deleteDuplicates([6, 6, 2, 2, 2, 3]));
+  print(Number.deleteDuplicates([1, 2, 3, 4, 9, 9]));
 }
 
 
