@@ -33,11 +33,11 @@ class Words {
         cleanedData += data[i];
       }
     }
-    var data2 = cleanedData.split(' ');
+    var accum = cleanedData.split(' ');
     // print(data2);
-    for( String index in data2){
+    for( String index in accum){
       if(result.containsKey(index)){
-        result[index] += 1;
+        result[index] ++;
       }else{
         result[index] = 1;
       }
@@ -54,5 +54,5 @@ class Words {
 
 
 void main(){
-  print(Words.countElements("pc -ordenador _computadora consola- ps5 ps5_ theLastOfUs ordenador consola- -theLastOfUs"));
+  print(Words.countElements("ps5__- pc -ordenador _computadora consola- ps5 ps5_ theLastOfUs ordenador consola- -theLastOfUs"));
 }
