@@ -20,12 +20,23 @@ Devuelve:
 */
 
 class Couples {
-  static List<List<int>> findCouplesWithAddition( List<int> numbers, int object ){
+  static List<List<int>> findCouplesWithAddition( List<int> numbers, int expectedResult ){
     List<List<int>> result = [];
-    List<int> copyOfNumbers = numbers;
+    // List<List<int>> finalResult = [];
+    // List<int> copyOfNumbers = numbers;
+    for(int i = 0; i < numbers.length; i++){
+      var firstNumber = numbers[i];
+      var secondNumber = expectedResult - firstNumber;
+
+      if(numbers.contains(secondNumber) && secondNumber != firstNumber){
+        result.add([firstNumber, secondNumber]);
+      }
+    }
+
     // for(int i = 0; i < numbers.length; i++){
-    //   for(int j = 0; j < numbers.length; j++){
-        
+    //   result[i] = [];
+    //   if(result[i] != []){
+    //     finalResult.add(result[i]);
     //   }
     // }
     
