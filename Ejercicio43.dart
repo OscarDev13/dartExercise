@@ -24,37 +24,6 @@ puedeFormarPalabra('CASO', coleccion)   // true
  
 */
 
-// class Word {
-//   bool canCreateWord(String word, List<List<String>> collection) {
-//     // Create list to store the data collection
-//     List<String> values = [];
-
-//     // Create word to compare the value
-//     String wordCollection = '';
-
-//     //Create the word converted in a list
-//     List<String> wordList = word.split('');
-//     // print('${word} ${collection[0][0]}');
-//     for (int i = 0; i < collection.length; i++) {
-//       List<String> innerList = collection[i];
-//       for (int j = 0; j < innerList.length; j++) {
-//         String element = innerList[j];
-//         // print(element);
-//         values.add(element);
-//       }
-//     }
-
-//     // Compare wordList contains the value in values
-//     wordList.forEach((element) {
-//       if (values.contains(element)) {
-//         wordCollection += element;
-//       }
-//     });
-//     // print(wordCollection);
-//     return wordCollection == word;
-//   }
-// }
-
 class Word {
   bool canCreateWord(String word, List<List<String>> collection) {
     // Create list to store the data collection
@@ -82,9 +51,11 @@ class Word {
       }
     });
     // print(wordCollection);
-    return true;
+    return wordCollection == word;
   }
 }
+
+
 
 void main() {
   Word wordObject = Word();
@@ -94,6 +65,6 @@ void main() {
     ['F', 'G', 'O', 'E']
   ];
 
-  print(wordObject.canCreateWord('VICTOR', collection));
+  print(wordObject.canCreateWord('CASCO', collection));
   // wordObject.canCreateWord('CASCO', collection);
 }
