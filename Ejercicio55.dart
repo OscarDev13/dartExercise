@@ -26,4 +26,39 @@ Devuelve:
 []
 ]
 */
+
+class Sets {
+  List<List<int>> subSets(List<int> numbers) {
+    List<List<int>> subsets = [[]];
+
+    // Sort results
+    numbers.sort((a,b) => a - b);
+
+    // Iterate all numbers
+    for(int i = 0; i < numbers.length; i++){
+      // get size of subsets list
+      var size = subsets.length;
+      // print(size);
+
+      // Iterate current subset
+      for(int j = 0; j < size; j++){
+        // print('hola');
+        // print(subsets[j]);
+        // Add to result a copy of current subset with the curren number agregated
+        // subsets.add([...subsets[j], numbers[i]]);
+        // print([...subsets[j], numbers[i]]);
+        // print(subsets[j]);
+        subsets.add([...subsets[j], numbers[i]]);
+        // print('subsets ${[...subsets[j]]} numbers ${numbers[i]}');
+      }
+    }
+
+    return subsets;
+  }
+}
+
+void main(){
+  Sets sets = Sets();
+  print(sets.subSets([1,2,3]));
+}
  
