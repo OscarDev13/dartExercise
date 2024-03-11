@@ -49,29 +49,26 @@ class Combination {
     'wxyz' // 9
   ];
 
-  List<String> combinationOfLetters(String number){
-    if(number.length == 0) return [];
+  List<String> combinationOfLetters(String number) {
+    if (number.length == 0) return [];
 
-    List<String> result = [];
+    List<String> result = [''];
+    var numberToList = number.split('');
 
-  for(int i = 0; i < number.length;i++){
-    // print(number[i].runtimeType);
-    // print(mapeo[int.parse(number[i])]);
-    for(int k = 0; k < result.length; k++){
-      var previousElement = result.last;
-      for(int j = 0; j < mapeo[int.parse(number[i])].length; j++){
-        // print(mapeo[int.parse(number[i])][j]);
-        String letra = mapeo[int.parse(number[i])][j];
-        result.add(previousElement+letra);
+    for(String number in numberToList){
+      for(int i = 0, long = result.length; i < long; i++){
+        var previousElement = result.removeAt(0);
+
+        int position = int.parse(number);
+        var currentList = mapeo[position].split('');
+        for(String letter in currentList){
+          // print('$number , $result');
+          result.add('${previousElement+letter}');
+        }
       }
     }
+    return result;
   }
-
-    print(result);
-    // print(int.parse(number).);
-    return [];
-  }
-  
 }
 
 void main() {
