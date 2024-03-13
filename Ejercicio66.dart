@@ -39,12 +39,48 @@ class Filter {
       'nombreReal':'Barry Allen',
       'poderes':['Supervelocidad', 'Agilidad sobresaliente'],
       'afiliacion':'Justice League'
-    },
+    },    
+    'Joker':{
+      'nombreReal':'Unknown',
+      'poderes':['Manipulacion psicologica', 'Inteligencia sobresaliente'],
+      'afiliacion':'Crimen organizado'
+    },    
+    'Penguin':{
+      'nombreReal':'Oswald Chesterfield Cobblepot',
+      'poderes':['Inteligencia sobresaliente', 'Manipulacion'],
+      'afiliacion':'Crimen organizado'
+    },    
+    'Harley Queen':{
+      'nombreReal':'Harleen Quinzel',
+      'poderes':['Agilidad sobresaliente', 'Expertise en artes marciales'],
+      'afiliacion':'Crimen organizado'
+    },    
   };
 
-  void filterByAffiliation() {
+  dynamic filterByAffiliation(String affiliation) {
     var result = [];
+    var info;
 
-    // for
+    for (var dcPerson in dcPeople.keys){
+      // print('${dcPerson}');
+      info = dcPeople[dcPerson];
+      // print(info['afiliacion'].toLowerCase());
+      // print(affiliation.toLowerCase());
+      if(info['afiliacion'].toLowerCase() == affiliation.toLowerCase()){
+        // print('$dcPerson ${info['nombreReal']} ${info['poderes']}');
+        result.add({
+          'nombre':dcPerson,
+          'nombreReal':info['nombreReal'],
+          'poderes':info['poderes']
+        });
+      }
+    }
+    // print(info);
+    return result;
   }
+}
+
+void main(){
+  Filter filter = Filter();
+  print(filter.filterByAffiliation('Justice League'));
 }
