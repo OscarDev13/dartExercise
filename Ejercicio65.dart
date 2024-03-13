@@ -31,30 +31,32 @@ ordenarPorFecha(usuarios)
  
 // Devolver solo nombre
 */
- 
- class Sort {
 
+class Sort {
   // List<Map<dynamic,dynamic
-  var users = [
+    List<Map<String, dynamic>> users = [
     {
-      'nombre': 'Juan',
-      'fecha': '1984-07-10 00:00:00Z'
+      'nombre': "Juan",
+      'fecha': DateTime(1984, 7, 10),
     },
     {
-      'nombre': 'Paco',
-      'fecha': '2017-08-12 00:00:00Z'
+      'nombre': "Paco",
+      'fecha': DateTime(2017, 8, 12),
     },
     {
-      'nombre': 'Pepe',
-      'fecha': '1991-12-06 00:00:00Z'
+      'nombre': "Pepe",
+      'fecha': DateTime(1991, 12, 6),
     },
   ];
 
- }
+  List<dynamic> sortByDate(){
+    users.sort((a,b) => b['fecha'].compareTo(a['fecha']));
+    List<dynamic> sortedNames = users.map((user) => user['nombre']).toList();
+    return sortedNames;
+  }
+}
 
- void main(){
-
- }
-
-
-
+void main() {
+  Sort sort = Sort();
+  print(sort.sortByDate());
+}
