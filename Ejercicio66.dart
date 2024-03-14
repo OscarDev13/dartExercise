@@ -17,6 +17,7 @@ filtrarPorAfiliacion('Crimen organizado')
  
 */
 
+
 class Filter {
 
   var dcPeople = {
@@ -58,8 +59,11 @@ class Filter {
   };
 
   dynamic filterByAffiliation(String affiliation) {
+
+
     var result = [];
     var info;
+
 
     for (var dcPerson in dcPeople.keys){
       // print('${dcPerson}');

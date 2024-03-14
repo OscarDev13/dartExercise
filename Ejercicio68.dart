@@ -26,6 +26,8 @@ import 'dart:math';
 class Password {
   String generatePassword( int pwdLength, bool withMayus, bool withNumbers, bool withSimbols ){
 
+    Random random = Random();
+
     String password = '';
 
     String dictionary = 'abcdefghijklmnopqrstuvwxyz';
@@ -57,13 +59,12 @@ class Password {
     if(withSimbols){
       // print('only with simbols');
       dictionary+='!@#%&*()/[]{}=<>.,';
-    }else{
-      // only with letters
-      print('only with letters');
     }
 
     for(int i = 0; i < pwdLength; i++){
-     password += dictionary[0];
+      var randomIndex = (random.nextDouble() * dictionary.length).round();
+      //TODO: Fix the bug: Invalid value: Not in inclusive range 0..53: 54 generatePassword(12, false, true, true), generatePassword(12, true, true, false)
+      password += dictionary[randomIndex];
     }
     return password;
   }
@@ -71,6 +72,6 @@ class Password {
 
 void main(){
   Password password = Password();
-  print(password.generatePassword(12, true, true, true));
+  print(password.generatePassword(12, true, true, false));
 }
 
